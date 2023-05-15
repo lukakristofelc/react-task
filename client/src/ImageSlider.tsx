@@ -3,7 +3,7 @@ import { useState } from "react";
 const slideStyles: React.CSSProperties= {
   width: "100%",
   height: "100%",
-  borderRadius: "10px",
+  borderRadius: "30px",
   backgroundSize: "cover",
   backgroundPosition: "center",
 };
