@@ -35,6 +35,7 @@ function App() {
     <div className="App">
     <h1>APARTMENTS FOR SALE</h1>
     <div style={{ borderTop: "4px solid darkcyan", marginLeft: 40, marginRight: 40, marginTop: 40, marginBottom: 40}}></div>
+    <Pagination totalAdverts={adverts.length} advertsPerPage={advertsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
       {currentAdverts.map(advert => <AdvertComponent title={advert['title']} address={advert['address']} images={parseImageURLS(advert['images'])} />)}
       <Pagination totalAdverts={adverts.length} advertsPerPage={advertsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
     </div>

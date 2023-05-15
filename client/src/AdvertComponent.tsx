@@ -13,8 +13,8 @@ interface ImageObject {
 }
 
 const containerStyles = {
-  width: "500px",
-  height: "280px",
+  width: "15em",
+  height: "8.4em",
   margin: "0 auto",
 };
 
