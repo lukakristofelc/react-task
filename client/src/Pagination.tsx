@@ -20,19 +20,19 @@ const Pagination = ({totalAdverts, advertsPerPage, setCurrentPage, currentPage}:
 
     let currentPages = [];
     console.log(currentPage+" "+pages.length);
-    if (currentPage == 1)
+    if (currentPage === 1)
     {
         currentPages = [1].concat(pages.slice(0,3)).concat([pages.length + 1]);
     }
-    else if (currentPage == 2)
+    else if (currentPage === 2)
     {
         currentPages = [1].concat(pages.slice(0,3)).concat([pages.length + 1]);
     }
-    else if (currentPage == pages.length)
+    else if (currentPage === pages.length)
     {
         currentPages = [1].concat(pages.slice(pages.length-4,pages.length));
     }
-    else if (currentPage == pages.length+1)
+    else if (currentPage === pages.length+1)
     {
         currentPages = [1].concat(pages.slice(pages.length-4,pages.length-1)).concat([pages.length + 1]);
     }
@@ -47,7 +47,7 @@ const Pagination = ({totalAdverts, advertsPerPage, setCurrentPage, currentPage}:
             <div className='pagination'>
                 {
                     currentPages.map((page, index) => {
-                        return <button key={index} onClick={() => setCurrentPage(page)} className={page == currentPage ? "active" : ""}>{page}</button>
+                        return <button key={index} onClick={() => setCurrentPage(page)} className={page === currentPage ? "active" : ""}>{page}</button>
                     })
                 }
             </div>

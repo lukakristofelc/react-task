@@ -16,6 +16,7 @@ function App() {
   const getAdverts = useCallback(async() => {
     try {
       const adverts = await axios.get('/api/values/all');
+      console.log(adverts);
       setAdverts(adverts['data']['rows']);
     }
     catch(e) {
@@ -31,12 +32,14 @@ function App() {
   const firstAdvertIndex = lastAdvertIndex - advertsPerPage;
   const currentAdverts = adverts.slice(firstAdvertIndex, lastAdvertIndex);
 
+  console.log(currentAdverts);
+
   return (
     <div className="App">
     <h1>APARTMENTS FOR SALE</h1>
     <div style={{ borderTop: "4px solid darkcyan", marginLeft: 40, marginRight: 40, marginTop: 40, marginBottom: 40}}></div>
     <Pagination totalAdverts={adverts.length} advertsPerPage={advertsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
-      {currentAdverts.map(advert => <AdvertComponent title={advert['title']} address={advert['address']} images={parseImageURLS(advert['images'])} />)}
+      {currentAdverts.map(advert => <AdvertComponent title={advert['title']} address={advert['address']} price={advert['price']} images={parseImageURLS(advert['images'])} />)}
       <Pagination totalAdverts={adverts.length} advertsPerPage={advertsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
     </div>
   );

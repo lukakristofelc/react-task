@@ -1,0 +1,29 @@
+{
+  "name": "scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scraper.ts",
+  "scripts": {
+    "dev": "nodemon",
+    "scrape": "npx ts-node scraper.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "body-parser": "*",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "2.8.4",
+    "express": "4.16.3",
+    "jsdom": "^22.0.0",
+    "nodemon": "1.18.3",
+    "pg": "8.0.3",
+    "puppeteer": "^20.2.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.1",
+    "@types/node": "^20.1.5"
+  }
+}
