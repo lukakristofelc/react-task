@@ -16,6 +16,19 @@ services:
       context: ./nginx
     ports:
     - '8080:80'
+  scraper:
+    build:
+      dockerfile: Dockerfile.dev
+      context: './scraper'
+    volumes:
+      - /app/node_modules
+      - ./scraper:/app
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=password
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPORT=5432
   api:
     build:
       dockerfile: Dockerfile.dev

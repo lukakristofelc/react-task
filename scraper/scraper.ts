@@ -12,7 +12,7 @@ interface Advert {
 
 const keys = {
     pgUser: 'postgres',
-    pgHost: 'localhost',
+    pgHost: 'postgres',
     pgDatabase: 'postgres',
     pgPassword: 'password',
     pgPort: 5432,
@@ -29,7 +29,7 @@ const pgClient = new Pool({
 
 export const scrape = async () => {
 
-    const browser: Browser = await puppeteer.launch({headless: "true"});
+    const browser: Browser = await puppeteer.launch({headless: "true", args:['--no-sandbox']});
 
     console.log("BROWSER LAUNCHED");
     const page = await browser.newPage();    
@@ -37,7 +37,7 @@ export const scrape = async () => {
 
     for(let i = 1; i<26; i++)
     {
-        console.log("scraping page "+i)
+        console.log("scraping page "+i+"/25");
         page.goto(url_template+i);
         await page.waitForNavigation();
         await new Promise(f => setTimeout(f, 1000));
@@ -82,6 +82,7 @@ export const scrape = async () => {
         insertAdvert(all_adverts[i], i);
     }
     console.log("DATABASE FILLED");
+    console.log("APPLICATION READY");
 }
 
 const insertAdvert = (advert, id) => {
