@@ -17,8 +17,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     background: transparent;
-    color: #eee;
-    border-color: #eee;
+    color: black;
+    border-color: black;
 }
 
 #choosePage {
@@ -27,20 +27,20 @@
     font-family: inherit;
     font-weight: 600;
     font-size: 16px;
-    margin: 10px 10px;
+    margin: 30px 10px;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     background: transparent;
-    color: #eee;
-    border-color: #eee;
+    color: black;
+    border-color: black;
 }
 
 .pagination button.active {
     font-weight: 900;
     border-color: #101010;
-    background: darkcyan;
-    color: #101010;
+    background: orange;
+    color: white;
 }
 
 input {

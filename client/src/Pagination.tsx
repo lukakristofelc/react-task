@@ -13,7 +13,7 @@ const Pagination = ({totalAdverts, advertsPerPage, setCurrentPage, currentPage}:
     let pages = [];
     const inputRef = useRef<HTMLInputElement | null>(null);
 
-    for (let i = 2; i <= Math.ceil(totalAdverts/advertsPerPage)-1; i++)
+    for (let i = 2; i <= Math.ceil(totalAdverts/advertsPerPage); i++)
     {
         pages.push(i);
     }
