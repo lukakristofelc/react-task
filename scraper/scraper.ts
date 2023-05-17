@@ -10,7 +10,7 @@ interface Advert {
     images: string[]
 }
 
-const keys = {
+const keys1 = {
     pgUser: 'postgres',
     pgHost: 'postgres',
     pgDatabase: 'postgres',
@@ -20,11 +20,11 @@ const keys = {
 
 const {Pool} = require("pg");
 const pgClient = new Pool({
-    user: keys.pgUser,
-    password: keys.pgPassword,
-    host: keys.pgHost,
-    database: keys.pgDatabase,
-    port: keys.pgPort
+    user: keys1.pgUser,
+    password: keys1.pgPassword,
+    host: keys1.pgHost,
+    database: keys1.pgDatabase,
+    port: keys1.pgPort
 });
 
 export const scrape = async () => {

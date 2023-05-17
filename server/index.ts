@@ -1,6 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+const {Pool} = require("pg");
 
 const keys = {
     pgUser: process.env.PGUSER,
@@ -10,7 +9,6 @@ const keys = {
     pgPort: process.env.PGPORT,
 };
 
-const {Pool} = require("pg");
 const pgClient = new Pool({
     user: keys.pgUser,
     password: keys.pgPassword,
@@ -20,8 +18,6 @@ const pgClient = new Pool({
 });
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
 
 app.get("/values/all", async(req, res) => {
     try{
