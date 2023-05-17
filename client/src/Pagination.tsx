@@ -10,7 +10,7 @@ type Props = {
 }
 
 const Pagination = ({totalAdverts, advertsPerPage, setCurrentPage, currentPage}: Props) => {
-    let pages = [];
+    let pages: number[] = [];
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     for (let i = 2; i <= Math.ceil(totalAdverts/advertsPerPage); i++)
@@ -53,10 +53,17 @@ const Pagination = ({totalAdverts, advertsPerPage, setCurrentPage, currentPage}:
             </div>
             <div className='pagination'>
                 <input ref={inputRef} type='number' id='page' name='page' min="1" max={pages.length-1} defaultValue={1}/>
-                <button id="choosePage" onClick={() => setCurrentPage(Number(inputRef.current?.value))}>Go to page</button>
+                <button id="choosePage" onClick={() => checkPageNumber(Number(inputRef.current?.value), pages, setCurrentPage)}>Go to page</button>
             </div>
         </div>
     )
+}
+
+const checkPageNumber = (pageNumber: number, pages: number[], setCurrentPage: Function) => {
+    if (pageNumber <= pages.length + 1 && pageNumber > 0)
+    {
+        setCurrentPage(pageNumber);
+    }
 }
 
 export default Pagination
