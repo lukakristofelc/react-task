@@ -1,12 +1,8 @@
 import './App.css';
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
-import AdvertComponent from "./AdvertComponent"
-import Pagination from './Pagination';
-
-interface ImageObject {
-  url?: string;
-}
+import AdvertComponent from "./Components/Advert"
+import Pagination from './Components/Pagination';
 
 function App() {
   const [adverts, setAdverts] = useState([]);
@@ -16,7 +12,6 @@ function App() {
   const getAdverts = useCallback(async() => {
     try {
       const adverts = await axios.get('/api/values/all');
-      console.log(adverts);
       setAdverts(adverts['data']['rows']);
     }
     catch(e) {
@@ -32,31 +27,15 @@ function App() {
   const firstAdvertIndex = lastAdvertIndex - advertsPerPage;
   const currentAdverts = adverts.slice(firstAdvertIndex, lastAdvertIndex);
 
-  console.log(currentAdverts);
-
   return (
     <div className="App">
     <h1>APARTMENTS FOR SALE</h1>
-    <div style={{ borderTop: "8px solid black", marginLeft: 40, marginRight: 40, marginTop: 40, marginBottom: 40}}></div>
+    <div className='divider'/>
     <Pagination totalAdverts={adverts.length} advertsPerPage={advertsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
-      {currentAdverts.map(advert => <AdvertComponent title={advert['title']} address={advert['address']} price={advert['price']} images={parseImageURLS(advert['images'])} />)}
+      {currentAdverts.map(advert => <AdvertComponent key={advert['id']} title={advert['title']} address={advert['address']} price={advert['price']} images={advert['images']} />)}
       <Pagination totalAdverts={adverts.length} advertsPerPage={advertsPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
     </div>
   );
-}
-
-function parseImageURLS(images: string) {
-  let parsedImages = images.substring(2, images.length - 2).split('","');
-  let imageObjects: ImageObject[] = [];
-
-  parsedImages.forEach((image) => {
-    imageObjects.push(
-      {
-        url: image   
-      });
-  });
-
-  return imageObjects;
 }
 
 export default App;

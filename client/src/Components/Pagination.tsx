@@ -52,7 +52,7 @@ const Pagination = ({totalAdverts, advertsPerPage, setCurrentPage, currentPage}:
                 }
             </div>
             <div className='pagination'>
-                <input ref={inputRef} type='number' id='page' name='page' min="1" max={pages.length-1} defaultValue={1}/>
+                <input ref={inputRef} type='number' id='page' name='page' min="1" max={pages.length+1} defaultValue={1}/>
                 <button id="choosePage" onClick={() => checkPageNumber(Number(inputRef.current?.value), pages, setCurrentPage)}>Go to page</button>
             </div>
         </div>
