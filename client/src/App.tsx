@@ -7,7 +7,7 @@ import Pagination from './Components/Pagination';
 function App() {
   const [adverts, setAdverts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [advertsPerPage, setAdvertsPerPage] = useState(9);
+  const [advertsPerPage, setAdvertsPerPage] = useState(12);
 
   const getAdverts = useCallback(async() => {
     try {
