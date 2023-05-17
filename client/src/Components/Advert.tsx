@@ -6,24 +6,27 @@ type Props = {
   title: string,
   address: string,
   price: string,
-  images: ImageObject[]
+  images: string
 }
 
 interface ImageObject {
   url?: string;
 }
 
-const containerStyles = {
-  width: "15em",
-  height: "8.4em",
+const sliderSize = {
+  width: "780px",
+  height: "437px",
   margin: "0 auto",
 };
 
-const AdvertComponent = ({title, address, price, images} :Props) => {  
+const Advert = ({title, address, price, images} :Props) => {
+
+  let imageUrls = parseImageURLS(images);
+
  return (
   <div className='advert'>
     <div className="advert-content">
-      <div style={containerStyles}><ImageSlider slides={images}/></div>
+      <div style={sliderSize}><ImageSlider slides={imageUrls}/></div>
       <div className='title'>{title}</div>
       <div className='address'>Address: {address}</div>
       <div className='address'>Price: {price}</div>
@@ -32,4 +35,18 @@ const AdvertComponent = ({title, address, price, images} :Props) => {
  )
 }
 
-export default AdvertComponent;
+function parseImageURLS(images: string) {
+  let parsedImages = images.substring(2, images.length - 2).split('","');
+  let imageObjects: ImageObject[] = [];
+
+  parsedImages.forEach((image) => {
+    imageObjects.push(
+      {
+        url: image   
+      });
+  });
+
+  return imageObjects;
+}
+
+export default Advert;
