@@ -1,6 +1,6 @@
 .title {
-  font-size: 40px;
-  margin-top: 50px;
+  font-size: 30px;
+  margin-top: 38px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   word-wrap: break-word;
   color: black;
@@ -9,8 +9,8 @@
 }
 
 .address {
-  font-size: 20px;
-  margin-top: 20px;
+  font-size: 15px;
+  margin-top: 15px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   word-wrap: break-word;
   color: #491f00;
@@ -18,28 +18,20 @@
   text-align: center;
 }
 
-.timestamp {
-font-size: 15px;
-word-wrap: break-word;
-color: #f2f2ff;
-font-weight: bold;
-text-align: center;
-}
-
 .advert {
 display: inline-block;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-padding: 10px;
-margin: 50px;
-border: 4px;
+padding: 7.5px;
+margin: 38px;
+border: 3px;
 border-style: solid;
 border-radius:10%;
 border-color: black;
-font-size: 50px;
+font-size: 38px;
 background: #e8e8e8;
 
-width: 900px;
-height: 900px;
+width: 675px;
+height: 675px;
 position: relative;
 }
 
@@ -48,12 +40,4 @@ position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-}
-
-.each-slide-effect > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  height: 350px;
 }

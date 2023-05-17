@@ -14,8 +14,8 @@ interface ImageObject {
 }
 
 const sliderSize = {
-  width: "780px",
-  height: "437px",
+  width: "585px",
+  height: "328px",
   margin: "0 auto",
 };
 

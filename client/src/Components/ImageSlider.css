@@ -7,8 +7,8 @@
   position: absolute;
   top: 50%;
   transform: translate(350%, -50%);
-  right: 32px;
-  font-size: 45px;
+  right: 24px;
+  font-size: 34px;
   color: black;
   z-index: 1;
   cursor: pointer;
@@ -18,8 +18,8 @@
   position: absolute;
   top: 50%;
   transform: translate(-350%, -50%);
-  left: 32px;
-  font-size: 45px;
+  left: 24px;
+  font-size: 34px;
   color: black;
   z-index: 1;
   cursor: pointer;

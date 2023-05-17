@@ -28,7 +28,7 @@ const ImageSlider = ({ slides } : Props) => {
   const slideStyle = {
     width: "100%",
     height: "100%",
-    borderRadius: "30px",
+    borderRadius: "23px",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundImage: `url(${slides[currentIndex].url})`,

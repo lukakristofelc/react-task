@@ -5,7 +5,7 @@
 
 h1{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 100px;
+  font-size: 75px;
   color: black;
 }
 
@@ -36,6 +36,6 @@ h1{
 }
 
 .divider {
-  border-top: 8px solid black;
+  border-top: 6px solid black;
   margin: 40px;
 }
