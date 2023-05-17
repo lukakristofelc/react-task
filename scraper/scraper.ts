@@ -1,3 +1,4 @@
+const {Pool} = require("pg");
 const puppeteer = require('puppeteer');
 import {Browser} from 'puppeteer';
 
@@ -10,21 +11,20 @@ interface Advert {
     images: string[]
 }
 
-const keys1 = {
-    pgUser: 'postgres',
-    pgHost: 'postgres',
-    pgDatabase: 'postgres',
-    pgPassword: 'password',
-    pgPort: 5432,
+const keys = {
+    pgUser: process.env.PGUSER,
+    pgHost: process.env.PGHOST,
+    pgDatabase: process.env.PGDATABASE,
+    pgPassword: process.env.PGPASSWORD,
+    pgPort: process.env.PGPORT,
 };
 
-const {Pool} = require("pg");
 const pgClient = new Pool({
-    user: keys1.pgUser,
-    password: keys1.pgPassword,
-    host: keys1.pgHost,
-    database: keys1.pgDatabase,
-    port: keys1.pgPort
+    user: keys.pgUser,
+    password: keys.pgPassword,
+    host: keys.pgHost,
+    database: keys.pgDatabase,
+    port: keys.pgPort
 });
 
 export const scrape = async () => {
@@ -32,6 +32,7 @@ export const scrape = async () => {
     const browser: Browser = await puppeteer.launch({headless: "true", args:['--no-sandbox']});
 
     console.log("BROWSER LAUNCHED");
+    
     const page = await browser.newPage();    
     let all_adverts: Advert[] = [];
 
@@ -58,13 +59,13 @@ export const scrape = async () => {
 
             let adverts: Advert[] = [];
 
-            for (let i = 0; i < titles.length; i++)
+            for (let j = 0; j < titles.length; j++)
             {
                 adverts.push({
-                    title: titles[i],
-                    address: addresses[i],
-                    price: prices[i],
-                    images: images[i]
+                    title: titles[j],
+                    address: addresses[j],
+                    price: prices[j],
+                    images: images[j]
                 })
             }
 
@@ -77,10 +78,11 @@ export const scrape = async () => {
     await pgClient.query("CREATE TABLE IF NOT EXISTS Adverts(advertid INT, title VARCHAR(255), address VARCHAR(255), price VARCHAR(255), images VARCHAR)")
     .catch(err => console.log(err));
 
-    for (let i=0; i<all_adverts.length; i++)
+    for (let i = 0; i < all_adverts.length; i++)
     {
         insertAdvert(all_adverts[i], i);
     }
+
     console.log("DATABASE FILLED");
     console.log("APPLICATION READY");
 }
